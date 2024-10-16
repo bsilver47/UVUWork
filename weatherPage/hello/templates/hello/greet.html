@@ -1,0 +1,36 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Hello!</title>
+        <link
+            rel="icon"
+            type="image/svg"
+            sizes="32x32"
+            href="{{ favicon_url }}"
+        />
+    </head>
+    <div class="bg">
+        <img src="{{ icon_url }}" />
+        <link href="{% static 'hello/styles.css' %}" rel="stylesheet" />
+    </div>
+    <body style="color: {{ text_color }}">
+        <h1>Hello, {{ name }}!</h1>
+        <p>{{ weather_readout }}</p>
+        <p>
+            <a href="{{ weather_url }}"
+                >This is a link to the Weather website</a
+            >
+        </p>
+        <p>
+            Additionally, the following is a list of tempuratures by hour for
+            the next 12 hours:
+        </p>
+        <ul style="font-size: 12px">
+            {% for task in add_weather %}
+            <li style="list-style-type: none">{{ task }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
